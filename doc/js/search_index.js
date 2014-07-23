@@ -1,1 +1,0 @@
-var search_data = {"index":{"searchIndex":["readme"],"longSearchIndex":[""],"info":[["README","","README_rdoc.html","","<p>Blog-o-Book\n<p><strong>Blog-o-Book</strong>, aka <strong>BOB</strong>, is a framework to\npublish a book as a webpage. Why not just publish …\n"]]}}

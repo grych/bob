@@ -1,0 +1,7 @@
+<% unless @chapter.descendants.empty? %>
+  <div class="row"> 
+    <div class="large-12 medium-12 small-12 columns">
+      <%= render partial: 'descendants_list', locals: {chapter: @chapter} %>
+    </div>
+  </div>
+<% end %>

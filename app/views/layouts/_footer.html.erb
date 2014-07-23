@@ -1,0 +1,38 @@
+
+<div class="row">
+  <div class="large-12 medium-12 columns">
+    <hr>
+  </div>
+  <div class="large-4 medium-4 columns">
+    <% if @chapter.prev %>
+      <%= link_to @chapter.prev.url do %>
+        <i class="fi-arrow-left"></i>
+        <%= @chapter.prev.full_title %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="large-12 medium-12 columns show-for-small">
+    <hr>
+  </div>
+  <div class="large-4 medium-4 columns large-text-center medium-text-center hide-for-small">
+    <% if @chapter.parent %>
+      <%= link_to @chapter.parent.url do %>
+        <i class="fi-arrow-up"></i>
+        <%= @chapter.parent.full_title %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="large-4 medium-4 columns text-right">
+    <% if @chapter.next %>
+      <%= link_to @chapter.next.url do %>
+        <%= @chapter.next.full_title %>
+        <i class="fi-arrow-right"></i>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="large-12 medium-12 columns show-for-small">
+    <hr>
+  </div>
+</div>
+<br>
+

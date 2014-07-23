@@ -1,0 +1,20 @@
+<li class="comment-details-li">
+  <div class="row comment-details-row">
+    <div class="large-8 medium-8 columns">
+      <%= raw comment.html %>
+    </div>
+    <div class="large-4 medium-4 columns text-right comment-author">
+      <div class="row">
+        <div class="large-4 medium-5 columns">
+          <%= image_tag comment.user.image_url, class: 'user-portrait' %>
+        </div>
+        <div class="large-8 medium-7 columns">
+          <%= comment.user.name %>
+          <br>
+          <span class="comment-datetime">posted <%= time_ago_in_words(comment.created_at) %> ago</span>
+        </div>
+      </div>
+    </div>
+    <%= render partial: 'comment_reply_box', locals: {comment: comment, button_title: raw('&nbsp;reply'), show: false} %>
+  </div>
+</li>

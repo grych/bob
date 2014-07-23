@@ -1,0 +1,67 @@
+= Blog-o-Book
+*Blog-o-Book*, aka *BOB*, is a framework to publish a book as a webpage. Why not just publish it as PDF or static html? *BOB* has a number of helper methods makes publishing and reading easier, like automatic table of contents, comments,  last read chapter or new chapters list.
+You can browse and read it as a book or like a blog, browsing the articles, adding a comments, linking to selected paragraphs. It is all up to you.
+
+== Example Page
+There is a free book {Ruby for Admins}[http://rubyforadmins.com], which uses *BOB*. It is for all Sysadmins, DBAs and other Unix power users to help them in their daily duties.
+
+== Installation
+*BOB* is based on Ruby on Rails. You will need Ruby (see 'http://rubyforadmins.com/installation' to learn how to install Ruby with Rbenv), version at least 2.0 and Rails 4.1.1.
+    git clone git@github.com:grych/bob.git
+    cd bob
+    bundle install
+    vi config/database.yml
+    rake db:migrate
+    rake db:reload_chapters
+    rails s
+
+== Chapters
+Every chapter is a single file in +chapters/+ directory. Every file must have unique numeric prefix and "html.erb" suffix (so you are writing html with Embeded Ruby). The file with prefix +0.+ is a main page. You can easy create the subchapters by adding more prefixes, like in the example below:
+    0. Introduction.html.erb
+    1. Chapter One.html.erb
+    1.1. Subchapter.html.erb
+If you add the chapter, you must call +rake db:reload_chapters+ to initiate the chapter loading. Note it will only load new chapters - if you deleted or renamed some chapters, you need to run +rake db:remove_chapters+ before.
+
+== Comments
+You should always use html paragraph - use the source code of this page as an example. To enable comments on the paragraph, add class "commentable" and assign the unique ID - this ID is used to find out to which character the comment belongs.
+    <p class='commentable' id='formatting'>
+
+== Helper Functions
+There is a number of helper function to easy compose the book. See the source code of this page to have an example. 
+*  <tt>bob_header(header)</tt> - generates the header (like "Helper Functions" above) with the anchor 
+*  +bob_last_read+ - renders html with the link to last read chapter 
+*  <tt>bob_new_arrivals(number_of_chapters)</tt> - renders html with links to newest *number_of_chapters* chapters 
+*  <tt>bob_link_to(url)</tt> - just a link to *url* 
+*  <tt>bob_link_to_chapter(chapter, title)</tt> - link to the given chapter (could be a number, a name or +:next+ or +:first+ symbol); title is optional 
+*  +bob_left_span+ - start division of the current paragraph to left and right span (like at the first paragraph of this page)
+*  +bob_right_span+ - the html below this will occur in the right span
+*  +bob_end_spans+ - mark the end of the paragraph division
+
+=== Example use of bob_link_to_chapter
+    bob_link_to_chapter :next, "Next Chapter" # link to the next chapter
+    bob_link_to_chapter [1,1]                 # link to the chapter 1.1.
+    bob_link_to_chapter "Chapter One"         # link to the chapter by name
+
+== Including Source Code
+You can include your code snipped by embeding ruby code: <%= bob_code filename: 'filename' %>. The file must be in +code/+ directory. Embeded script would look like this:
+    <%= bob_code filename: '0.hello.rb' %>
+
+
+You could also include your snippet in the chapter, just pass it as block to +bob_code+. Available brushes are +:ruby+, +:shell+ and +:text+. You can add more brushes by editing +assets/javascripts/application.js+ - http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/ for a list of all Syntax Higlighter brushes.
+    <%= bob_code brush: :ruby do %>
+      puts "Hello, world"
+    <% end %>
+
+
+== Configuration
+All the config is done in +config/application.rb+. You can change the title, default view and turn of showing chapter number.
+    config.book_title = "Blog-o-Book"
+    config.default_view = :blog # or :book
+    config.show_chapter_no = true
+
+== Author
+This framework is written by Tomek 'Grych' Gryszkiewicz. Do not hestitate to contact me at mailto:grych@tg.pl or visit {my web page}[http://www.tg.pl].
+
+== License
+BSD License
+

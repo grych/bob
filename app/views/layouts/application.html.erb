@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= full_title(yield(:title)) %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="row">
+
+      <div class="off-canvas-wrap" data-offcanvas>
+        <div class="inner-wrap">
+
+          <nav class="top-bar show-for-small">
+            <ul class="title-area">
+              <li class="name menu-icon left-off-canvas-toggle">
+                <h1><a href="#"><i class="fi-list"></i> <span>Table of Contents</span></a></h1>
+              </li>
+            </ul>
+         </nav>
+
+          <aside class="left-off-canvas-menu">
+            Contents:
+            <%= render partial: 'chapters/toc_small', locals: {chapter: Chapter.root} %>
+          </aside>            
+          <a class="exit-off-canvas" href="#"></a>
+
+          <div id="sidebar-chapters-menu" class="large-3 medium-3 columns <%=if book? then 'hide' end%>">
+            <div class="hide-for-small">
+              <div class="sidebar">
+                <nav>
+                  <ul class="no-bullet side-nav">
+
+<!--                     <li>
+                      <div class="row collapse">
+                        <div class="large-12 medium-12 columns">
+                          <form>
+                            <input tabindex="1" id="autocomplete" type="search" placeholder="Search">
+                          </form>
+                        </div>
+                      </div>
+                    </li>                  
+ -->
+                    <%= render partial: 'chapters/toc', locals: {chapter: Chapter.root} %>
+                    </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <div id="main-chapter-content" class="<%=if book? then 'large-12 medium-12' else 'large-9 medium-9' end %> columns">
+
+            <p></p>
+            <article>
+              <%= content_for?(:content) ? yield(:content) : yield %>
+            </article>
+
+            <%= render 'layouts/footer' %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+@import 'foundation_and_overrides';
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/DXI1ORHCpsQm3Vp6mXoaTaRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/PRmiXeptR36kaC0GEAetxvR_54zmj3SbGZQh3vCOwvY.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/xjAJXh38I15wypJXxuGMBrrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(http://themes.googleusercontent.com/static/fonts/opensanscondensed/v7/gk5FxslNkTTHtojXrkp-xM6Eyu0BCqAfob_z3hhzRFzr7w4p9aSvGirXi6XmeXNA.woff) format('woff');
+}
+
+body {
+  font-size: 14px;
+}
+p {
+  font-size: 15px;
+  text-align: justify;
+}
+strong {
+  font-size: 14px;
+}
+code {
+  font-size: 14px;
+}
+ul {
+  font-size: 14px;
+}
+li {
+  font-size: 14px;
+}
+.active {
+  background: #00779b;
+}
+h5 {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.bob-code {
+  // border-left: $hr-border-width+3 $hr-border-style $hr-border-color;
+  // border-right: $hr-border-width+3 $hr-border-style $hr-border-color;
+}
+.bob-additional {
+  border-left: $hr-border-width+1 $hr-border-style $hr-border-color;
+}
+
+.comment-button {
+  cursor: pointer;
+}
+
+.user-portrait {
+  width: 50px;
+  height: 50px;
+  // border: 1px solid white;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;  
+}
+
+.user-portrait-small {
+  // margin-top: 2px;
+  // margin-bottom: 2px;
+  // margin-left: 6px;
+  // margin-right: 6px;
+  margin-bottom: 2px;
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;  
+}
+
+.text-right {
+  text-align: right;
+}
+
+.comment-details-row {
+  border-top: 2px solid #e7e7e7;
+  // border-right: 2px solid #e7e7e7;
+}
+
+.comment-details-li {
+  margin-bottom: 10px;
+}
+
+.comment-author {
+  background-color: #e7e7e7;
+  padding: 5px;
+}
+
+.comment-datetime {
+  font-size: 10px;
+}
+
+.identfy-yourself-box {
+  border: 2px solid #e7e7e7;
+}
+
+.new-comment-box {
+}
+
+.markdown-help {
+  font-size: 13px;
+}
+
+.smaller {
+  font-size: 13px;
+}
+
+.bigger {
+  font-size: 20px;
+}

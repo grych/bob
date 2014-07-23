@@ -1,0 +1,39 @@
+<p>
+  <div class="large-12 medium-12 columns">
+    <% if current_user %>
+      <% if show %>
+        <hr>
+      <% else %>
+        <a class="button tiny reply-button" data-comment-id="<%= comment.id if comment %>"><i class="fi-clipboard-pencil"></i><%= button_title %></a>
+      <% end %>
+      <% if (comment && comment.user == current_user) || (!show && admin_user?) %>
+        <a class="button tiny edit-button" data-comment-id="<%= comment.id if comment %>"><i class="fi-page-edit"></i>&nbsp;edit</a>
+        <% if comment && (comment.descendants.empty? || admin_user?) %>
+          <a class="button tiny alert delete-button" data-comment-id="<%= comment.id if comment %>"><i class="fi-comment-minus"></i>&nbsp;delete</a>
+        <% end %>
+      <% end %>
+    <% end %>
+  
+    <div class="row reply-box <%= unless show then "hide" end%>">
+      <div class="large-8 medium-7 columns">
+        <%= form_tag(new_comment_path, method: 'post', class: 'reply-form', remote: true) do %>
+          <%= hidden_field_tag(:comment_id) %>
+          <%= hidden_field_tag(:comment_dom, @comment_dom) %>
+          <%= hidden_field_tag(:chapter_url, @chapter_url) %>
+          <%= hidden_field_tag(:edit_or_reply, 'reply') %>
+          <%= hidden_field_tag(:comment_text_raw, comment ? comment.text : "") %>
+          <%= text_area_tag(:comment_text, "", class: '', size: "80x7", placeholder: "enter your comment here...") %>
+          <%= button_tag(type: "submit", class: "button tiny post-comment-button") do %>
+            <i class="fi-clipboard-pencil"></i>&nbsp;post the comment
+          <% end %>
+        <% end %>
+      </div>
+      <div class="large-4 medium-5 columns markdown-help">
+        You can use <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a> syntax. Basics:
+        _underscore_, *emphasis*, **strong**, >&nbsp;blockquote, *&nbsp;list, &lt;link or mailto&gt;. <br>
+        Put four spaces at the beginning of the line for code snippet or put the code in backtick quotes: `code`.
+      </div>
+    </div>
+
+  </div>
+</p>

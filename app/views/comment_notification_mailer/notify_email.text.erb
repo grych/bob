@@ -1,0 +1,14 @@
+    Dear <%= @user.name %>,
+    ===========================
+
+<% if @comment.chapter %>
+<%= @comment.user.name %> just replied on your comment in the chapter "<%= @comment.chapter.title %>" of "Ruby For Admins":
+<% else %>
+<%= @comment.user.name %> just replied on your comment in "Ruby For Admins":
+<% end %>
+
+<%= @comment.text %>
+
+  To see this comment online, follow the link <%= @url %>
+  Regards,
+    "Ruby for Admins"

@@ -1,0 +1,11 @@
+# Google app_id + app_secret, used in initializers/01_oauth.rb
+
+development:
+  app_id: 537524755361-qs4s7t6trpsodasq449u7orucmnd9spo.apps.googleusercontent.com
+  app_secret: l9jLOlroVKmz1AlrE6-ZyksB
+test:
+  app_id: 537524755361-qs4s7t6trpsodasq449u7orucmnd9spo.apps.googleusercontent.com
+  app_secret: l9jLOlroVKmz1AlrE6-ZyksB
+production:
+  app_id: 537524755361-9e733bn6gnns0pi7p49cg4n1pbgjpfrk.apps.googleusercontent.com
+  app_secret: sZVKP5DuhlPSsqhhRX8wd-xg

@@ -1,0 +1,105 @@
+<%= bob_header 'It works!' %>
+<p>
+<%= bob_left_span %>
+  <p>
+    <em>Blog-o-Book</em>, aka <em>BOB</em>, is a framework to publish a book as a webpage. Why not just publish it as PDF or static html? <em>BOB</em> has a number of helper methods makes publishing and reading easier, like automatic table of contents, comments,  last read chapter or new chapters list.
+  </p>
+<%= bob_right_span %>
+    <%= bob_last_read %>
+    <%= bob_new_arrivals 4 %>
+<%= bob_end_spans %>
+</p>
+<p class='commentable' id="format">
+  You can browse and read it as a book, starting with the <%= bob_link_to_chapter :first, 'Chapter One' %> or read it as a blog, browsing the articles, adding a comments (keep an eye on <i class="fi-comment-quotes"></i> symbol), linking to selected paragraphs. It is all up to you.
+  And last but not least, it is free! 
+</p>
+
+<%= bob_header 'Example Page' %>
+<p class='commentable' id="example">
+  There is a free book <a href="http://rubyforadmins.com" target="_blank">Ruby for Admins</a>, which uses <em>BOB</em>. It is written for Sysadmins, DBAs and other Unix power users to help them in their daily duties.
+</p>
+
+
+<%= bob_header 'Installation' %>
+<p class='commentable' id="installation">
+  <em>BOB</em> is based on Ruby on Rails. You will need Ruby (see <%= bob_link_to 'http://rubyforadmins.com/installation' %> to learn how to install Ruby with Rbenv), version at least 2.0 and Rails 4.1.1.
+  <%= bob_code brush: :text do %>
+git clone git@github.com:grych/bob.git
+cd bob
+bundle install
+vi config/database.yml
+rake db:migrate
+rake db:reload_chapters
+rails s
+  <% end %>
+</p>
+
+
+<%= bob_header 'Chapters' %>
+<p class='commentable' id="chapters">
+  Every chapter is a single file in <code>chapters/</code> directory. Every file must have unique numeric prefix and "html.erb" suffix (so you are writing html with Embeded Ruby). The file with prefix <code>0.</code> is a main page (this page). You can easy create the subchapters by adding more prefixes, like in the example below:
+  <%= bob_code brush: :text do %>
+0. Introduction.html.erb
+1. Chapter One.html.erb
+1.1. Subchapter.html.erb
+  <% end %>
+</p>
+<p class='commentable' id="chapters-reload">
+  If you add the chapter, you must call <code>rake db:reload_chapters</code> to initiate the chapter loading. Note it will only load new chapters - if you deleted or renamed some chapters, you need to run <code>rake db:remove_chapters</code> before.
+</p>
+
+<%= bob_header 'Comments' %>
+<p class='commentable' id="comments">
+  You should always use html paragraph - use the source code of this page as an example. To enable comments on the paragraph, add class "commentable" and assign the unique ID - this ID is used to find out to which character the comment belongs.
+  <%= bob_code brush: :xml do %>
+&lt;p class='commentable' id='formatting'&gt;
+  <% end %>
+</p>
+
+<%= bob_header 'Helper Functions' %>
+<p class='commentable' id="helpers">
+  There is a number of helper function to easy compose the book. See the source code of this page to have an example. <br>
+  <code>bob_header(header)</code> - generates the header (like "Helper Functions" above) with the anchor <br>
+  <code>bob_last_read</code> - renders html with the link to last read chapter <br>
+  <code>bob_new_arrivals(number_of_chapters)</code> - renders html with links to newest <em>number_of_chapters</em> chapters <br>
+  <code>bob_link_to(url)</code> - just a link to <em>url</em> <br>
+  <code>bob_link_to_chapter(chapter, title)</code> - link to the given chapter (could be a number, a name or <code>:next</code> or <code>:first</code> symbol); title is optional <br>
+  <code>bob_left_span</code> - start division of the current paragraph to left and right span (like at the first paragraph of this page)
+  <code>bob_right_span</code> - the html below this will occur in the right span
+  <code>bob_end_spans</code> - mark the end of the paragraph division
+  <%= bob_code brush: :text do %>
+bob_link_to_chapter :next, "Next Chapter" # link to the next chapter
+bob_link_to_chapter [1,1]                 # link to the chapter 1.1.
+bob_link_to_chapter "Chapter One"         # link to the chapter by name
+  <% end %>
+</p>
+
+<%= bob_header 'Including Source Code' %>
+<p class='commentable' id="source-code">
+  You can include your code snipped by embeding ruby code: <code>&lt%= bob_code filename: 'filename' %&gt</code>. The file must be in <code>code/</code> directory. Embeded script would look like this:
+  <%= bob_code filename: '0.hello.rb' %>
+</p>
+<p class='commentable' id="sorce-code-block">
+  You could also include your snippet in the chapter, just pass it as block to <code>bob_code</code>. Available brushes are <code>:ruby</code>, <code>:shell</code> and <code>:text</code>. You can add more brushes by editing <code>assets/javascripts/application.js</code> - see <%= bob_link_to 'http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/' %> for a list of all Syntax Higlighter brushes.
+  <%= bob_code brush: :ruby do %>
+&lt%= bob_code brush: :ruby do %&gt
+puts "Hello, world"
+&lt% end %&gt
+  <% end %>
+</p>
+
+
+<%= bob_header 'Configuration' %>
+<p class='commentable' id="config">
+  All the config is done in <code>config/application.rb</code>. You can change the title, default view and turn of showing chapter number.
+  <%= bob_code brush: :ruby do %>
+    config.book_title = "Blog-o-Book"
+    config.default_view = :blog # or :book
+    config.show_chapter_no = true
+  <% end %>
+</p>
+
+<%= bob_header 'Author' %>
+<p class='commentable' id="author">
+  This framework is written by Tomek 'Grych' Gryszkiewicz. Do not hestitate to contact me at <a href="mailto:grych@tg.pl?Subject=BOB">grych@tg.pl</a>, check my <a href="http://www.tg.pl">page</a> or just leave a comment here:
+</p>

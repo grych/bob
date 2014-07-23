@@ -1,0 +1,24 @@
+  <ul class="<%=if chapter == Chapter.root then "off-canvas-list" end %> no-bullet">
+    <li class=""><%=link_to Chapter.root.full_title + " (main page)", root_url %></li>
+
+  <%
+    chapter.descendants.each do |descendant|
+      if descendant.parent == Chapter.root
+  %>
+        <li class="divider"></li>
+  <%
+      end
+      li_class = 'active' if descendant == @chapter 
+  %>
+      <li class="<%=li_class%>"><%=link_to descendant.full_title, descendant.url %></li>
+  <%
+      unless descendant.descendants.empty?
+  %>
+        <li>
+          <%= render partial: 'chapters/toc', locals: {chapter: descendant} %>
+        </li>
+  <%
+      end
+    end
+  %>
+</ul>

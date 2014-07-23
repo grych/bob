@@ -1,0 +1,78 @@
+<%= javascript_tag do %>
+  window.bob_view = '<%=j bob_view.to_s %>';
+<% end %>
+
+<div class="contain-to-grid">
+<nav class="top-bar hide-for-small " data-topbar>
+  <section class="top-bar-section">
+    <ul class="left">
+    </ul>
+    <ul class="title-area hide-for-medium hide-for-small">
+      <li class="name" data-tooltip title="Page Root">
+        <h1>
+          <a href="<%= root_url %>"> <%= full_title(yield(:title)) %></a>
+        </h1>
+      </li>
+    </ul>
+    <ul class="right">
+      <% if current_user %>
+        <li id='user-portrait-small-li' class="<%= if bob_view == :book then "hide" else "" end %> has-dropdown">
+          <a>
+            <%= image_tag(current_user.image_url, class: 'user-portrait-small') %>
+          </a>
+          <ul class="dropdown">
+            <li class="text-right"><a><%= current_user.name %> via <%= current_user.provider.gsub(/_.*/, '') %></a></li>
+            <%= form_tag(allow_notifications_path, method: 'post', id: :allow_notifications_form, remote: true) do %>
+            <%= hidden_field_tag(:notifications_enabled, current_user.allow_notifications) %>
+              <li class="text-right">
+                <a id="allow-notifications">
+                  <i id="allow-notifications-switch" class="<%= current_user.allow_notifications ? "fi-check" : "fi-x" %> bigger"></i>
+                  &nbsp;&nbsp;allow email notifications
+                </a>
+              </li>
+            <% end %>
+            <li class="text-right"><a href="/auth/signout">Logout</a></li>
+          </ul>
+        </li>
+      <% end %>
+      <li class="name <%= "active" unless bob_view == :book %>" id="toc-button" data-tooltip title="Toggle Table of Contents and Comments">
+        <a><i class="fi-list"></i> <span id="toc-button-text"><%= bob_view.to_s.capitalize %> View</span></a>
+      </li>
+      <li class="name" data-tooltip title="Previous Chapter">
+        <% if @chapter.prev %>
+          <%= link_to @chapter.prev.url do %>
+            <i class="fi-arrow-left"></i>
+            <%= @chapter.prev.full_title %>
+          <% end %>
+        <% end %>
+      </li>
+      <li class="name" data-tooltip title="Next Chapter">
+        <% if @chapter.next %>
+          <%= link_to @chapter.next.url do %>
+            <%= @chapter.next.full_title %>
+            <i class="fi-arrow-right"></i>
+          <% end %>
+        <% end %>
+      </li>
+
+    </ul>
+  </section>
+</nav>
+</div>
+
+
+
+
+<% unless session[:ok_with_cookies] %>
+  <div class="row">
+    <div class="large-12 medium-12 columns">
+      <br>
+      <div data-alert class="alert-box info radius">
+        This website uses cookies. If you continue to use this site we will assume that you are happy with this.
+        When you close this box we will save this information in a cookie to ensure you'll never be bothered with this information box.
+        <a href="#" class="close" id="cookies-information-close-button">&times;</a>
+      </div>
+    </div>
+  </div>
+<% end %>
+

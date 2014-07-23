@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Dear <%= @user.name %>,<br>
+      <%= @comment.user.name %> just replied on your comment 
+      <% if @comment.chapter %>
+        in the chapter <em><%= @comment.chapter.title %></em> of
+      <% else %>
+        in 
+      <% end %>
+      <em>Ruby For Admins</em>: <br>
+      <%= @comment.html %>
+    </p>
+    <p>
+      To see this comment online, follow the link <a href="<%= @url %>"><%= @url %></a>.
+    </p>
+    <p>
+      <small>
+        This is an automated message, please do not reply.
+      </small>
+    </p>
+    <p>
+      Regards, <br>
+      <em>Ruby for Admins</em>
+    </p>
+  </body>
+</html>

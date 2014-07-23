@@ -1,0 +1,16 @@
+<ul class="no-bullet">
+  <%
+    comment.descendants.each do |descendant|
+  %>
+      <%= render partial: 'comment_details', locals: {comment: descendant} %>
+  <%
+      unless descendant.descendants.empty?
+  %>
+        <li>
+          <%= render partial: 'comments_list', locals: {comment: descendant} %>
+        </li>
+  <%
+      end
+    end
+  %>
+</ul>

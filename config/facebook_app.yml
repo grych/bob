@@ -1,0 +1,11 @@
+# Facebook app_id + app_secret, used in initializers/01_oauth.rb
+
+development:
+  app_id: 692498430827237
+  app_secret: 871480d3eef09c8375208173afe0fc87
+test:
+  app_id: 692498430827237
+  app_secret: 871480d3eef09c8375208173afe0fc87
+production:
+  app_id: 692498334160580
+  app_secret: 3cf3873fef50afec96d69a793776566d

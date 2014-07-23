@@ -1,0 +1,45 @@
+<% unless comments.empty? %>
+  <p>
+    <div class="row"> 
+      <div class="large-12 medium-12 small-12 columns">
+        <ul class="no-bullet">
+          <% comments.each do |comment| %>
+            <li>            
+              <%= render partial: 'comment_details', locals: {comment: comment} %>
+            </li>
+            <li>
+              <%= render partial: 'comments_list', locals: {comment: comment} %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </p>
+<% end %>
+
+
+<% unless current_user %>
+
+  <div class="row identfy-yourself-box hide-for-small"> 
+    <div class="large-12 medium-12 small-12 columns">
+      <p class="smaller">
+      Please identify yourself to post comments. The following portals are used only for authentication. Your comments will not be posted anywhere outside this site. 
+      </p>
+      <a href="auth/github" class="button small"><i class="fi-social-github"></i>&nbsp;github</a>  
+      <a href="auth/linkedin" class="button small"><i class="fi-social-linkedin"></i>&nbsp;linkedin</a>
+      <a href="auth/google_oauth2" class="button small"><i class="fi-social-google-plus"></i>&nbsp;google</a>
+      <a href="auth/facebook" class="button small"><i class="fi-social-facebook"></i>&nbsp;facebook</a>
+    </div>
+  </div>
+
+<% else %>
+
+  <%= javascript_include_tag 'comments' %>
+  <%= render partial: 'comment_reply_box', locals: {comment: nil, button_title: raw('&nbsp;new&nbsp;comment'), show: true } %>
+<!--   <div class="row new-comment-box hide-for-small"> 
+    <div class="large-12 medium-12 small-12 columns">
+      <a class="button tiny reply-button" data-comment-id=""><i class="fi-clipboard-pencil"></i>&nbsp;new&nbsp;comment</a>
+    </div>
+  </div>
+ -->
+<% end %>

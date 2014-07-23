@@ -1,0 +1,7 @@
+<%
+  provide :title, @chapter.title unless @chapter.root? 
+  content_for :content do
+    render file: BoB::Application.config.chapters_path.join(@chapter.file_name).to_s
+  end
+  render template: "layouts/application"
+%>

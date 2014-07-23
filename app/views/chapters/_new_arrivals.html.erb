@@ -1,0 +1,6 @@
+<p>
+  New chapters:<br>
+  <% Chapter.recently_added(no_chapters).each do |chapter| %>
+    <%= link_to chapter.full_title, chapter.url %><small> (<%= time_ago_in_words(chapter.created_at) %> ago)</small><br>
+  <% end %>
+</p>

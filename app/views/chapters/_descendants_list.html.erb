@@ -1,0 +1,16 @@
+<ul class="no-bullet">
+  <%
+    chapter.descendants.each do |descendant|
+  %>
+      <li><%=link_to descendant.full_title, descendant.url %></li>
+  <%
+      unless descendant.descendants.empty?
+  %>
+        <li>
+          <%= render partial: 'descendants_list', locals: {chapter: descendant} %>
+        </li>
+  <%
+      end
+    end
+  %>
+</ul>

@@ -6,7 +6,7 @@ You can browse and read it as a book or like a blog, browsing the articles, addi
 There is a free book {Ruby for Admins}[http://rubyforadmins.com], which uses *BOB*. It is for all Sysadmins, DBAs and other Unix power users to help them in their daily duties.
 
 == Installation
-*BOB* is based on Ruby on Rails. You will need Ruby (see 'http://rubyforadmins.com/installation' to learn how to install Ruby with Rbenv), version at least 2.0 and Rails 4.1.1.
+*BOB* is based on Ruby on Rails. You will need Ruby (see http://rubyforadmins.com/installation to learn how to install Ruby with Rbenv), version at least 2.0 and Rails 4.1.1.
     git clone git@github.com:grych/bob.git
     cd bob
     bundle install

@@ -43,7 +43,7 @@ There is a number of helper function to easy compose the book. See the source co
     bob_link_to_chapter "Chapter One"         # link to the chapter by name
 
 == Including Source Code
-You can include your code snipped by embeding ruby code: <%= bob_code filename: 'filename' %>. The file must be in +code/+ directory. Embeded script would look like this:
+You can include your code snipped by embeding ruby code: +<%= bob_code filename: 'filename' %>+. The file must be in +code/+ directory. Embeded script would look like this:
     <%= bob_code filename: '0.hello.rb' %>
 
 

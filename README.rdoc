@@ -7,6 +7,9 @@ There is a free book {Ruby for Admins}[http://rubyforadmins.com], which uses *BO
 
 == Installation
 *BOB* is based on Ruby on Rails. You will need Ruby (see http://rubyforadmins.com/installation to learn how to install Ruby with Rbenv), version at least 2.0 and Rails 4.1.1.
+    gem install bundler
+    rbenv rehash
+    gem install rails
     git clone git@github.com:grych/bob.git
     cd bob
     bundle install

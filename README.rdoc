@@ -43,11 +43,8 @@ There is a number of helper function to easy compose the book. See the source co
     bob_link_to_chapter "Chapter One"         # link to the chapter by name
 
 == Including Source Code
-You can include your code snipped by embeding ruby code: <tt><%= bob_code filename: 'filename' %></tt>. The file must be in +code/+ directory. Embeded script would look like this:
-    <%= bob_code filename: '0.hello.rb' %>
-
-
-You could also include your snippet in the chapter, just pass it as block to +bob_code+. Available brushes are +:ruby+, +:shell+ and +:text+. You can add more brushes by editing +assets/javascripts/application.js+ - http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/ for a list of all Syntax Higlighter brushes.
+You can include your code snipped by embeding ruby code: <tt><%= bob_code filename: 'filename' %></tt>. The file must be in +code/+ directory. 
+You could also include your snippet in the chapter, just pass it as block to +bob_code+. Available brushes are +:ruby+, +:shell+ and +:text+. You can add more brushes by editing +assets/javascripts/application.js+ - see http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/ for a list of all Syntax Higlighter brushes.
     <%= bob_code brush: :ruby do %>
       puts "Hello, world"
     <% end %>

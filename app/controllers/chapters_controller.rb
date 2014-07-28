@@ -7,10 +7,14 @@ class ChaptersController < ApplicationController
 
   def show
     @chapter = Chapter.find_by(url: params[:chapter_url])
-    raise ActionController::RoutingError.new("No route matches [GET] \"#{params[:chapter_url]}\"") unless @chapter
-    session[:last_read] = @chapter
-    store_location
-    render_chapter
+    #raise ActionController::RoutingError.new("No route matches [GET] \"#{params[:chapter_url]}\"") unless @chapter
+    if @chapter
+      session[:last_read] = @chapter
+      store_location
+      render_chapter
+    else
+      redirect_to root_url
+    end
   end
 
   def ok_with_cookies

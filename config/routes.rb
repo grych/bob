@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get   'auth/failure',             to: redirect('/'),                as: 'auth_failure'
   get   'auth/signout',             to: 'sessions#destroy',           as: 'auth_signout'
 
+  # Atom feed
+  get '/feed' => 'news_items#feed', :as => :feed, defaults: { format: 'atom' }
+
   # Default to the chapter 0.
   root 'chapters#index'
   

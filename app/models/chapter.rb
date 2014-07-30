@@ -34,6 +34,7 @@ class Chapter < ActiveRecord::Base
   def self.recently_added(how_many)
     Chapter.where.not(id: Chapter.root).order('created_at desc').first(how_many)
   end
+  
   def self.recently_updated(how_many)
     Chapter.where.not(id: Chapter.root).order('file_updated_at desc').first(how_many)
   end

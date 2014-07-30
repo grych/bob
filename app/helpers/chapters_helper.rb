@@ -3,6 +3,10 @@ module ChaptersHelper
     chapter.url
   end
 
+  def chapter_url(chapter)
+    request.protocol + request.host_with_port + "/" + chapter.url
+  end
+
   def check_session_view
     session['view'] ||= BoB::Application.config.default_view
   end

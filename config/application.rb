@@ -38,9 +38,10 @@ module BoB
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.autoload_paths += %W(#{config.root}/lib)
 
-    # BoB::Application.config.chapters_path
     config.chapters_path = Rails.root.join('chapters')
     config.book_title = "Blog-o-Book"
+    config.book_author = "Tomek Gryszkiewicz"
+    config.book_author_email = "grych@tg.pl"
     config.default_view = :blog # or :book
     config.show_chapter_no = true
   end

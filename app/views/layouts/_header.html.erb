@@ -15,8 +15,11 @@
       </li>
     </ul>
     <ul class="right">
+      <li class="<%= if bob_view == :book then "hide" else "" end %> hide-for-book" data-tooltip title="Atom News Feed">
+        <a href="/feed"><i class="fi-rss"></i></a>
+      </li>
       <% if current_user %>
-        <li id='user-portrait-small-li' class="<%= if bob_view == :book then "hide" else "" end %> has-dropdown">
+        <li id='user-portrait-small-li' class="<%= if bob_view == :book then "hide" else "" end %> has-dropdown hide-for-book">
           <a>
             <%= image_tag(current_user.image_url, class: 'user-portrait-small') %>
           </a>

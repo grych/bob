@@ -65,7 +65,7 @@ hide_or_show_menu = () ->
     $('#main-chapter-content').removeClass("large-9 medium-9")
     $('#main-chapter-content').addClass("large-12 medium-12")
     $('.comment-button').hide()
-    $('#user-portrait-small-li').hide()
+    $('.hide-for-book').hide()
     $('#toc-button-text').text('Book View')
   else
     $('#toc-button').addClass('active')
@@ -73,7 +73,7 @@ hide_or_show_menu = () ->
     $('#main-chapter-content').removeClass("large-12 medium-12")
     $('#main-chapter-content').addClass("large-9 medium-9")
     $('.comment-button').show()
-    $('#user-portrait-small-li').show()
+    $('.hide-for-book').show()
     $('#toc-button-text').text('Blog View')
 
 toggle_blog_or_book = () ->

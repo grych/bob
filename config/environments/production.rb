@@ -43,7 +43,9 @@ Rails.application.configure do
   # config.force_ssl = true
 
   # Set to :debug to see everything in the log.
-  config.log_level = :info
+  config.log_level = :debug
+  # To ensure that all my "puts" are showing in log... (I know, I know..)
+  config.logger = Logger.new('log/production.log')
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]

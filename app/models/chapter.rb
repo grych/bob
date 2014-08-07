@@ -106,17 +106,31 @@ class Chapter < ActiveRecord::Base
       chapters << f
     end
     # update the structure (find parents)
-    Chapter.all.sort.each do |ch|
-      ch.parent = ch.get_parent(ch.chapter_no)
-      ch.save!
+    Chapter.record_timestamps = false
+    begin
+      Chapter.all.sort.each do |ch|
+        ch.parent = ch.get_parent(ch.chapter_no)
+        ch.updated_at = ch.file_updated_at
+        ch.created_at ||= Time.now
+        ch.save!
+      end
+    ensure
+      Chapter.record_timestamps = true  
     end
     chapters
   end
 
   # create chapter from the given file
   def self.create_from_file(file_path)
-    c = Chapter.from_file(file_path)
-    c.save!
+    Chapter.record_timestamps = false
+    begin
+      c = Chapter.from_file(file_path)
+      c.updated_at = c.file_updated_at
+      c.created_at ||= Time.now
+      c.save!
+    ensure
+      Chapter.record_timestamps = true  
+    end
     c
   end
 
